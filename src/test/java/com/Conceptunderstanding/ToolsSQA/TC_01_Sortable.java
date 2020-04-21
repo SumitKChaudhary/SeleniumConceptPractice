@@ -25,5 +25,6 @@ public class TC_01_Sortable extends ToolsQABaseClass
 		{
 			System.out.println("Please check the element");
 		}
+		driver.findElement(By.xpath("item1"));
 	}
 }
