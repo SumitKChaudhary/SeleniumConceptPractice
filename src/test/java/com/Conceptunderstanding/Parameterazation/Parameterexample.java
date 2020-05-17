@@ -1,6 +1,5 @@
 package com.Conceptunderstanding.Parameterazation;
 
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -9,7 +8,7 @@ public class Parameterexample
 {
 	//@Parameters({"browserType","userNmae", "passWord"})
 	
-	@Ignore
+	
 	@Test
 	public void testParameterFromTestNGFile(String browserName, String userN, String pass)
 	{
