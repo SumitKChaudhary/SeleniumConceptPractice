@@ -10,15 +10,11 @@ package com.Conceptunderstanding.DatePicker;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.SimpleFormatter;
-
 import org.joda.time.DateTime;
 import org.joda.time.Months;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import freemarker.template.SimpleDate;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DatePickerTest 
@@ -32,18 +28,17 @@ public class DatePickerTest
 		driver= new ChromeDriver();
 		
 		driver.navigate().to("https://jqueryui.com/datepicker/");
+		driver.manage().window().maximize();
 		
 		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='demo-frame']")));
 		
 		driver.findElement(By.xpath("//input[@id='datepicker'][1]")).click();
 		
-		String setDateStr= "09/08/2020";
+		String setDateStr= "17/06/1990";
 		
 		String currDateStr = driver.findElement(By.xpath("//div[@class='ui-datepicker-title']")).getText(); //MMMM YYYY
 		
-		System.out.println(currDateStr);
-		
-		Date setDate = new SimpleDateFormat("dd/mm/yyyy").parse(setDateStr);
+		Date setDate = new SimpleDateFormat("dd/MM/yyyy").parse(setDateStr);
 		
 		Date currDate = new SimpleDateFormat("MMMM yyyy").parse(currDateStr);
 		
@@ -73,13 +68,10 @@ public class DatePickerTest
 				
 			}
 			
-			String day; 
-			
-			day = new SimpleDateFormat("dd").format(setDate);
-			
-			System.out.println(day);
-			driver.findElement(By.xpath("//a[text()='"+Integer.parseInt(day)+"']")).click();
 		}
+		
+		String day = new SimpleDateFormat("dd").format(setDate);
+		driver.findElement(By.xpath("//a[text()='"+Integer.parseInt(day)+"']")).click();
 	}
 
 }
